@@ -8,3 +8,7 @@ class ActiveSupport::TestCase
   include ApplicationHelper
   # Add more helper methods to be used by all tests here...
 end
+
+def is_logged_in?
+  !session[:user_id].nil?
+end

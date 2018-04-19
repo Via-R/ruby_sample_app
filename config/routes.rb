@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
 	# [type of request] [path to show],  to: [controller]#[action], as: [prefered name of path variable]
   # get '/signup', to: 'users#new', as: "signup"
   get '/signup', to: 'users#new'
@@ -15,6 +17,12 @@ Rails.application.routes.draw do
 
 	root 'static_pages#home'
 
+  get '/login', to: 'sessions#new'
+
+  post '/login', to: 'sessions#create'
+
+  delete '/logout', to: 'sessions#destroy'
+  
 	resources :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

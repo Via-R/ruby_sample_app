@@ -1,0 +1,17 @@
+<% provide(:title, 'Edit user') %>
+<% provide(:button_text, 'Save changes') %>
+<% provide(:controller_path, edit_user_path(@user)) %>
+<%# provide(:controller_path, user_path(@user)) %>
+<%# Тут комментарий, потому что в случае ошибки формата формы обновления информации о странице новая форма открывается по адресу user/:id, а по логике должна в user/:id/edit%>
+<h1>Update your profile</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%# В этом случае при заполнении формы фрейм знает, что метод формы должен быть PATCH, поскольку во время создания формы он проверяет new_record? на юзере, который ему передали%>
+    <%= render 'form' %>
+    <div class="gravatar_edit">
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails" target="_blank" rel="noopener">change</a>
+    </div>
+  </div>
+</div>

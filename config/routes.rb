@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   # get '/signup', to: 'users#new', as: "signup"
   get '/signup', to: 'users#new'
 
-	post '/signup',  to: 'users#create'
+  post '/signup',  to: 'users#create'
+
+  patch '/users/:id/edit(.:format)',  to: 'users#update'
+  # patch '/users/:id(.:format)',  to: 'users#update'
+  # Тут комментарий, потому что в случае ошибки формата формы обновления информации о странице новая форма открывается по адресу user/:id, а по логике должна в user/:id/edit
 
   get '/home', to: 'static_pages#home'
 

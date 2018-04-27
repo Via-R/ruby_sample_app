@@ -3,7 +3,10 @@ class User < ApplicationRecord
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 	validates :name, presence: true, length: {maximum: 50}
 	validates :email, presence: true, length: {maximum: 255}, format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
-	validates :password, presence: true, length:{minimum: 6}
+
+  # И тут я нихрена не понял. Если регистрироваться, всё верно - эта валидация допускает пустые пароли, но их запрещает has_secure_password. А вот при редактировании
+  # можно спокойно не вводить пароль, изменения сохраняются, но пароли почему-то не стают пустыми. МАГИЯ
+	validates :password, presence: true, length:{minimum: 6}, allow_nil: true
 
 	# Эта штуковина делает проверку чтобы совпадали пароли и чтобы они не были пустые
 	has_secure_password

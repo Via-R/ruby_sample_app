@@ -70,7 +70,8 @@ class UserTest < ActiveSupport::TestCase
 	end
 
 	test "authenticated? should return false for a user with nil digest" do
-		assert_not @def_user.authenticated?('')
+		# Dunno why is it called nil digest if in fact it's a simple, non-encrypted token
+		assert_not @def_user.authenticated?(:remember,'')
 	end
   # test "the truth" do
   #   assert true
